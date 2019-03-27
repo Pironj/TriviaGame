@@ -1,0 +1,71 @@
+html { 
+    background: url(../images/background1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+    background-color: transparent;
+}
+
+#background {
+    background: url(../images/background.jpg) no-repeat center;
+    background-size: 1100px 900px;
+    margin-top: 5%;
+    height: 500px;
+}
+#title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 32px;
+    width: fit-content;
+    background-color: whitesmoke;
+}
+#question {
+    text-align: center;
+    width: 80%;
+    background-color: whitesmoke;
+    height: 250px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#start {
+    margin: auto;
+    margin-top: 2%;
+}
+#info {
+    size: 30px;
+    font-weight: bolder;
+    margin: auto;
+    padding: 5%;
+}
+#timer {
+    size: 30px;
+    font-weight: bolder;
+    height: fit-content;
+    margin-top: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+#quest {
+    size: 30px;
+    font-weight: bolder;
+    height: fit-content;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+
+}
+.custom-control {
+    margin: auto;
+    
+    
+}
+#correctAns {
+    color: rgb(70, 136, 4);
+    font-weight: bolder;
+    font-size: larger;
+}
