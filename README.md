@@ -1,7 +1,7 @@
 # TriviaGame
 Trivia Game using JavaScript and jQuery
 
-* A 90's cartoon themed trivia game on the Show Doug Funny that aired on Nickelodeon. 
+* A 90's cartoon themed trivia game on the Show Doug Funnie that aired on Nickelodeon. 
 
 * Game shows only one question until the player answers it or their time runs out.
 
