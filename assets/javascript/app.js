@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var audio = new Audio("assets/audio/Doug_Theme_Song.mp3.crdownload");
+    var audioWrongAns = new Audio("assets/audio/horn.ogg");
     //object variables we will use in our functions below.
     var game = {
         correct: 0, // to hold the number of correct answers when we display our results page.
@@ -8,7 +10,7 @@ $(document).ready(function() {
         count: 0, // *IMPORTANT* this variable acts as our index number for each array questions, choices & answers.  Our functions use this number to pull the correct coresponding sub-array elements for every new question.
         runTimer: false, // *IMPORTANT* this variable acts as a stoper to stop our clock when the user will submit an answer or when time runs out on our clock. Initial value of false keeps the timer from running until the appropriate function is called to begin timer later.
         currentChoices:'',
-        arrayLength: 4,
+        arrayLength: 4, // variable created to stop our game when we reach end of array length.
         // object array for each of our question we will loop through in our questions function to display them individually to our user for the game logic.
         questions: [
             "What is Doug's dog's name?",
@@ -31,20 +33,9 @@ $(document).ready(function() {
             "Roger",
             "Patti",
             "The Beets",
-            "igloo",   
+            "igloo",
         ],
     };
-// tutoring mess
-// var arr = [
-//     {
-//         question: "What is Doug's dog's name?",
-//         choices: ["Spot", "Hambone", "Porkchop", "Spike"],
-//         answer: "Porkchop"
-//     }
-// ]
-// accessing question: arr[0].question
-// Spike: arr[0].choices[3]
-// answer: arr[0].answer
 
     // create a variable to display the instructions of the game to the user and puts in a <p> elements.
     var instructions = $("<p></p>").text("Welcome to a trivia game on the Nickelodeon TV show Doug Funny.  You will have 20 seconds to answer each question before time runs out.  Your score will be displayed once you finish the quiz.  Good luck!");
@@ -55,6 +46,7 @@ $(document).ready(function() {
 
     // button we create on our instructions page to begin the game on button click.
     $("#start").on("click", start);
+    
     // function that is called when we click our button to hide everything on the current page and call the nextQuestion function to start displaying our questions to the user.
     function start() {
         game.count = 0;
@@ -63,15 +55,22 @@ $(document).ready(function() {
         game.unAnswered = 0;
         game.runTimer = false;
         game.currentChoices = '';
+        audio.play();
 
         // animation on hide event.
-        $(instructions).hide("slow");
+        var openingImg = $("<div>");
+        openingImg.attr("id", "opening");
+        openingImg.append("<img src='assets/images/opening.gif' width='300px'>")
+        $(instructions).append(openingImg)   
+        setTimeout(() => {
+            $(instructions).hide("slow");
+        }, 1500);
         // hides our start game button. will use a submit answer button for the questions page.
         $('#start').hide();
         // we use a setTimeout function to wait till our animations complete on hiding before we call our nextQuestion function.
         setTimeout(() => {
             nextQuestion(); 
-        }, 1000);
+        }, 2000);
     };
     
     // function that controls our questions and displays them in our div element in our html @ id=question
@@ -172,6 +171,7 @@ $(document).ready(function() {
             setTimeout(() => {
                 showAnswer();
                 $('#question').append(wrong);
+                audioWrongAns.play();
             }, 500);
             setTimeout(() => {
                 game.count++;
@@ -194,6 +194,8 @@ $(document).ready(function() {
     };
     // function that reduces our timer variable by 1 and edits our variables to hold unAnswered questions when time runs out.
     function decrimentTimer() {
+        var dontKnImg = $("<div>");
+        $(dontKnImg).append("<img src='assets/images/stumped.gif' width='200px'>");
         if (game.runTimer = true) {
             game.time--;
             $("#timer").text("Time Remaining: " + game.time);
@@ -201,6 +203,8 @@ $(document).ready(function() {
         if (game.time === 0) {
             stopTimer();
             game.unAnswered++;
+            $('#question').append(dontKnImg);
+            audioWrongAns.play();
             
             $("#timer").empty();
             showAnswer();
@@ -231,12 +235,14 @@ $(document).ready(function() {
     function results() {
         $('#question').empty();
         var endGame = $('<div>');
+        var endSong = $('<iframe width="400" height="300" src="https://www.youtube.com/embed/a-Pj2aDQ6bs?controls=0?&autoplay=1" " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
         endGame.attr('id', 'results');
         endGame.attr('container');
         endGame.text("Here is how you stack up: ");
         endGame.append('<div>' + "You got " + game.correct + " correct" + '</div>');
         endGame.append('<div>' + "You missed " + game.incorrect + " questions" + '</div>');
         endGame.append('<div>' + "You did not answer " + game.unAnswered + " questions" + '</div>');
+        $('#question').prepend(endSong);
         $('#question').append(endGame);
         $('#question').append('<button type="button" class="btn btn-primary btn-lg" id="tryAgain">Try Again?</button>');
         $("#tryAgain").on("click", start);

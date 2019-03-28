@@ -11,16 +11,21 @@ body {
 
 #background {
     background: url(../images/background.jpg) no-repeat center;
-    background-size: 1100px 900px;
     margin-top: 5%;
-    height: 500px;
+    height: 600px;
+    border-style: ridge;
+    border-color: purple;
+    border-width: 4px;
 }
 #title {
     text-align: center;
     font-weight: bolder;
-    font-size: 32px;
+    font-size: 60px;
     width: fit-content;
     background-color: whitesmoke;
+    border-style: ridge;
+    border-color: black;
+    border-width: 4px;
 }
 #question {
     text-align: center;
@@ -30,16 +35,22 @@ body {
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
+    border-style: ridge;
+    border-color: black;
+    border-width: 4px;
+    font-size: large;
+    box-sizing: content-box;
 }
 #start {
     margin: auto;
     margin-top: 2%;
 }
 #info {
-    size: 30px;
+    size: 40px;
     font-weight: bolder;
     margin: auto;
     padding: 5%;
+    box-sizing: content-box;
 }
 #timer {
     size: 30px;
@@ -47,7 +58,7 @@ body {
     height: fit-content;
     margin-top: 0;
     border-style: solid;
-    border-width: 2px;
+    border-bottom-width: 4px;
     border-color: black;
 }
 #quest {
@@ -55,7 +66,7 @@ body {
     font-weight: bolder;
     height: fit-content;
     border-bottom-style: solid;
-    border-bottom-width: 2px;
+    border-bottom-width: 4px;
     border-bottom-color: black;
 
 }
@@ -90,4 +101,12 @@ body {
 }
 #tryAgain {
     margin: auto;
+}
+.btn {
+    border-style: inset;
+    border-color: black;
+    border-width: 2px;
+}
+#openingImg {
+    margin-top: 15px;
 }
