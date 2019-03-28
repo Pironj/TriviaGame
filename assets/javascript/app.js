@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var audio = new Audio("assets/audio/Doug_Theme_Song.mp3.crdownload");
     var audioWrongAns = new Audio("assets/audio/horn.ogg");
+    var audioCorrect = new Audio("assets/audio/correct.wav");
     //object variables we will use in our functions below.
     var game = {
         correct: 0, // to hold the number of correct answers when we display our results page.
@@ -55,7 +56,10 @@ $(document).ready(function() {
         game.unAnswered = 0;
         game.runTimer = false;
         game.currentChoices = '';
-        audio.play();
+        setTimeout(() => {
+            audio.play();
+        }, 1300);
+            
 
         // animation on hide event.
         var openingImg = $("<div>");
@@ -118,7 +122,7 @@ $(document).ready(function() {
             // Pulls the array values at coresponding index positions and creates radio buttons for each element of the array.
             for (var i = 0; i < game.currentChoices.length; i++) {
                 // Bootstrap element with modifications to input "id" & class "id" giving it our position variable [i] of the array of current game.chocies.
-                var radioBtn = '<div class="custom-control custom-radio"><input type="radio" id="customRadio'+i+'" name="customRadio" class="custom-control-input"><label class="custom-control-label" id="customRadio'+i+'" for="customRadio'+i+'">'+game.currentChoices[i]+'</label></div>';
+                var radioBtn = '<div class="custom-control custom-radio"><input type="radio" id="customRadio'+i+'" name="customRadio" class="custom-control-input"><label class="custom-control-label" id="customRadio'+i+'" for="customRadio'+i+'">'+game.currentChoices[i]+'</label><br></div>';
                 // creates the buttons in our html div at 'id=questions'.
                 $('#question').append(radioBtn);
             }
@@ -154,6 +158,7 @@ $(document).ready(function() {
             right.append('<div>CORRECT!</div>');
             right.append("<img src='assets/images/correctAnswer.gif' width='200px'>");
             $('#question').append(right);
+            audioCorrect.play();
             $('#buttonLocation').empty();
             setTimeout(() => {
                 game.count++;

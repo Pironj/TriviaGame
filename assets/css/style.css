@@ -57,7 +57,7 @@ body {
     font-weight: bolder;
     height: fit-content;
     margin-top: 0;
-    border-style: solid;
+    border-bottom-style: solid;
     border-bottom-width: 4px;
     border-color: black;
 }
