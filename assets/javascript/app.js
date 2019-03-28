@@ -39,7 +39,7 @@ $(document).ready(function() {
     };
 
     // create a variable to display the instructions of the game to the user and puts in a <p> elements.
-    var instructions = $("<p></p>").text("Welcome to a trivia game on the Nickelodeon TV show Doug Funny.  You will have 20 seconds to answer each question before time runs out.  Your score will be displayed once you finish the quiz.  Good luck!");
+    var instructions = $("<p></p>").text("Welcome to a trivia game on the Nickelodeon TV show Doug Funnie.  You will have 20 seconds to answer each question before time runs out.  Your score will be displayed once you finish the quiz.  Good luck!");
     // create 'id= info' for styling in CSS.
     instructions.attr("id", "info");
     // create the text that will be displayed to the user of our instructions variable by appending to the html div elements 'id=question'.
