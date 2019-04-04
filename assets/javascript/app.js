@@ -39,7 +39,7 @@ $(document).ready(function() {
     };
 
     // create a variable to display the instructions of the game to the user and puts in a <p> elements.
-    var instructions = $("<p></p>").text("Welcome to a trivia game on the Nickelodeon TV show Doug Funnie.  You will have 20 seconds to answer each question before time runs out.  Your score will be displayed once you finish the quiz.  Good luck!");
+    var instructions = $("<p></p>").text("Welcome to a trivia game on the Nickelodeon TV show Doug Funnie.  You will have 15 seconds to answer each question before time runs out.  Your score will be displayed once you finish the quiz.  Good luck!");
     // create 'id= info' for styling in CSS.
     instructions.attr("id", "info");
     // create the text that will be displayed to the user of our instructions variable by appending to the html div elements 'id=question'.
@@ -64,6 +64,7 @@ $(document).ready(function() {
         // animation on hide event.
         var openingImg = $("<div>");
         openingImg.attr("id", "opening");
+        openingImg.addClass("img-fluid");
         openingImg.append("<img src='assets/images/opening.gif' width='300px'>")
         $(instructions).append(openingImg)   
         setTimeout(() => {
@@ -146,7 +147,9 @@ $(document).ready(function() {
         var rightAnswer;
         var userChoice;
         var wrong = $('<div id="wrongAns">');
+        wrong.addClass("embed-responsive");
         var right = $('<div id="rightAnsDisplay">');
+        right.addClass("embed-responsive");
         rightAnswer = game.answers[game.count];
         console.log(rightAnswer)
         userChoice = $('input:radio:checked').next('label:first').html()
@@ -200,6 +203,7 @@ $(document).ready(function() {
     // function that reduces our timer variable by 1 and edits our variables to hold unAnswered questions when time runs out.
     function decrimentTimer() {
         var dontKnImg = $("<div>");
+        dontKnImg.addClass("embed-responsive");
         $(dontKnImg).append("<img src='assets/images/stumped.gif' width='200px'>");
         if (game.runTimer = true) {
             game.time--;
@@ -240,14 +244,17 @@ $(document).ready(function() {
     function results() {
         $('#question').empty();
         var endGame = $('<div>');
+        var resultsDiv = $('<div>');
         var endSong = $('<iframe width="400" height="300" src="https://www.youtube.com/embed/a-Pj2aDQ6bs?controls=0?&autoplay=1" " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+        endSong.addClass("embed-responsive");
+        endGame.addClass('container');
         endGame.attr('id', 'results');
-        endGame.attr('container');
-        endGame.text("Here is how you stack up: ");
-        endGame.append('<div>' + "You got " + game.correct + " correct" + '</div>');
-        endGame.append('<div>' + "You missed " + game.incorrect + " questions" + '</div>');
-        endGame.append('<div>' + "You did not answer " + game.unAnswered + " questions" + '</div>');
-        $('#question').prepend(endSong);
+        resultsDiv.text("Here is how you stack up: ");
+        resultsDiv.append('<div>' + "You got " + game.correct + " correct" + '</div>');
+        resultsDiv.append('<div>' + "You missed " + game.incorrect + " questions" + '</div>');
+        resultsDiv.append('<div>' + "You did not answer " + game.unAnswered + " questions" + '</div>');
+        $(endGame).append(endSong);
+        $(endGame).append(resultsDiv);
         $('#question').append(endGame);
         $('#question').append('<button type="button" class="btn btn-primary btn-lg" id="tryAgain">Try Again?</button>');
         $("#tryAgain").on("click", start);
