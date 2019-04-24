@@ -64,7 +64,7 @@ $(document).ready(function() {
         // animation on hide event.
         var openingImg = $("<div>");
         openingImg.attr("id", "opening");
-        openingImg.addClass("img-fluid");
+        openingImg.addClass("embed-responsive");
         openingImg.append("<img src='assets/images/opening.gif' width='300px'>")
         $(instructions).append(openingImg)   
         setTimeout(() => {
