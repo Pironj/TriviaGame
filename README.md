@@ -15,6 +15,14 @@ Trivia Game using JavaScript and jQuery
 
 * When all questions have been answered the final screen appears and shows the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
+# Technologies
+
+* Javascript
+* HTML
+* CSS
+* JQuery
+
+
 Enjoy!
 
 Link: https://pironj.github.io/TriviaGame/
